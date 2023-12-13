@@ -32,5 +32,6 @@ class SMTPClient:
         self._client.login(self._sender_email, self._password)
 
     def send(self, to: str, message: str) -> None:
+        message = message.encode('utf-8')
         self._client.sendmail(self._sender_email, to, message)
         self._client.quit()
