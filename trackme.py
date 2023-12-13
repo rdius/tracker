@@ -11,6 +11,13 @@ import base64
 import tempfile
 import uuid
 
+from notifications import twilio_api
+from notifications import smtp_client
+from notifications.settings import NOTIFICATION_RECIPIENT_PHONE
+from notifications.settings import NOTIFICATION_RECIPIENT_EMAIL
+
+TRIGGER_CLASS_NAMES = ['car']
+
 
 def get_video_download_link(video_path):
     with open(video_path, 'rb') as f:
@@ -126,6 +133,17 @@ def track():
             for class_name, count in class_count.items():
                 if class_name not in class_time_series:
                     class_time_series[class_name] = []
+                    # SEND NOTIFICATION
+                    if class_name in TRIGGER_CLASS_NAMES:
+                        twilio_api.send(
+                            to=NOTIFICATION_RECIPIENT_PHONE,
+                            message=f'{class_name} trouvé !'
+                        )
+                        smtp_client.send(
+                            to=NOTIFICATION_RECIPIENT_EMAIL,
+                            message=f'{class_name} trouvé !'
+                        )
+
                 class_time_series[class_name].append(count)
             time_list.append(start)
             count_list.append(obj_count)
