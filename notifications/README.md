@@ -7,7 +7,7 @@ This Python package includes tools for sending SMS and emails. It is designed to
 ### SMS
 
 - [x] Twilio
-- [x] Wirepick
+- [ ] Wirepick
 
 ### E-mail
 - [x] Gmail
