@@ -15,11 +15,11 @@ This Python package includes tools for sending SMS and emails. It is designed to
 
 # Settings
 
-This file contains all configurations settings for the package. It is located in the ``./settings.py`` file. You can directly modify this file to set the credential values.
+This file contains all configurations settings for the package. It is located in the current folder ( ``./settings.py`` ) file. You can directly modify this file to set the credential values.
 
 ## Using .venv environment variables file
 
-Create a file named **.env** in the project root folder and set environment variables like below:
+Create a file named **.env** in the project root folder and set environment variables with content like below:
 
 ```bash
 NOTIFICATION_RECIPIENT_PHONE='+XXXXXXXXXXX'
